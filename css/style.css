@@ -37,9 +37,7 @@ h2, h3, h4{
 p, li{
   font-family: 'Josefin Sans', sans-serif;
 }
-.main{
-  height: 70vh;
-}
+
 .img-round{
   border-radius: 50%;
   width: 300px;
@@ -85,6 +83,10 @@ p, li{
 li{
   line-height: 3;
 }
+.btn-contact{
+  background-color: #14869d;
+  color: #ffffff;
+}
 #form-message-warning, #form-message-success {
   display: none; 
 }
@@ -95,5 +97,27 @@ li{
   font-weight: bold; 
 }
 #form-message-warning {
-  color: #B90B0B; 
+  color: #B90B0B;
+  /*color: #3327ea;*/ 
+}
+@media (min-width: 430px){
+  .main{
+    height: 70vh;
+  }
+}
+@media (max-width: 429px){
+    .img-round{
+      margin-top: 10%;
+      height: 200px;
+      width: 200px;
+    }
+    h1{
+      margin-top: 20%;
+    }
+    .h2-main{
+      margin-top: 10%;
+    }
+    .mobile-hide{
+      visibility: hidden;
+    }
 }
