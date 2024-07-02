@@ -53,12 +53,7 @@ p, li{
   display: flex;
   justify-content: center;
 }
-.carousel-img{
-  width: 600px; 
-  height: 400px;
-  border: 0.5px solid rgb(228, 228, 228); 
-  border-radius: 5px;
-}
+
 .carousel-control-prev{
   filter: drop-shadow(0 0 0.1rem rgb(0, 0, 0));
 }
@@ -104,6 +99,15 @@ li{
   .main{
     height: 70vh;
   }
+  .carousel-img{
+    width: 600px; 
+    height: 400px;
+    border: 0.5px solid rgb(228, 228, 228); 
+    border-radius: 5px;
+  }
+  .m-left-5{
+    margin-left: 5px;
+  }
 }
 @media (max-width: 429px){
     .img-round{
@@ -119,5 +123,9 @@ li{
     }
     .mobile-hide{
       visibility: hidden;
+    }
+    .carousel-img{
+      border: 0.5px solid rgb(228, 228, 228); 
+      border-radius: 5px;
     }
 }
