@@ -95,9 +95,18 @@ li{
   color: #B90B0B;
   /*color: #3327ea;*/ 
 }
+.competences{
+  background-color: #cff7ff
+}
 @media (min-width: 430px){
   .main{
     height: 70vh;
+  }
+  .competences{
+    height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .carousel-img{
     width: 600px; 
