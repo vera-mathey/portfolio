@@ -1,69 +1,83 @@
-$(function() {
+document.addEventListener('DOMContentLoaded', () => {
+	const contactForm = document.querySelector('#contactForm');
+  
+	if (contactForm) {
+	  contactForm.addEventListener('submit', (event) => {
+		event.preventDefault();
+		const formData = new FormData(contactForm);
+  
+		fetch('php/send-email.php', {
+		  method: 'POST',
+		  body: formData,
+		})
+		  .then(response => response.text())
+		  .then(data => {
+			if (data === 'OK') {
+			  alert('Message envoyé avec succès !');
+			} else {
+			  alert('Erreur : ' + data);
+			}
+		  })
+		  .catch(error => {
+			alert('Une erreur est survenue : ' + error.message);
+		  });
+	  });
+	}
+  });
 
-	'use strict';
 
-	// Form
-
-	var contactForm = function() {
-
-		if ($('#contactForm').length > 0 ) {
-			$( "#contactForm" ).validate( {
-				rules: {
-					name: "required",
-					email: {
-						required: true,
-						email: true
-					},
-					message: {
-						required: true,
-						minlength: 5
-					}
-				},
-				messages: {
-					name: "Please enter your name",
-					email: "Please enter a valid email address",
-					message: "Please enter a message"
-				},
-				/* submit via ajax */
-				submitHandler: function(form) {		
-					var $submit = $('.submitting'),
-						waitText = 'Submitting...';
-
-					$.ajax({   	
-				      type: "POST",
-				      url: "php/send-email.php",
-				      data: $(form).serialize(),
-
-				      beforeSend: function() { 
-				      	$submit.css('display', 'block').text(waitText);
-				      },
-				      success: function(msg) {
-		               if (msg == 'OK') {
-		               	$('#form-message-warning').hide();
-				            setTimeout(function(){
-		               		$('#contactForm').fadeOut();
-		               	}, 1000);
-				            setTimeout(function(){
-				               $('#form-message-success').fadeIn();   
-		               	}, 1400);
-			               
-			            } else {
-			               $('#form-message-warning').html(msg);
-				            $('#form-message-warning').fadeIn();
-				            $submit.css('display', 'none');
-			            }
-				      },
-				      error: function() {
-				      	$('#form-message-warning').html("Something went wrong. Please try again.");
-				         $('#form-message-warning').fadeIn();
-				         $submit.css('display', 'none');
-				      }
-			      });    		
-		  		}
-				
-			} );
+  document.addEventListener("DOMContentLoaded", () => {
+	const carousels = document.querySelectorAll('.carousel');
+  
+	carousels.forEach((carousel) => {
+	  const paginationLinks = carousel.querySelectorAll('.pagination .page-link[data-bs-slide-to]');
+	  const prevBtn = carousel.querySelector('.prev-slide');
+	  const nextBtn = carousel.querySelector('.next-slide');
+  
+	  // Synchroniser la pagination avec les diapositives
+	  paginationLinks.forEach(link => {
+		link.addEventListener('click', (event) => {
+		  event.preventDefault();
+		  const index = parseInt(link.getAttribute('data-bs-slide-to'), 10);
+		  const bsCarousel = bootstrap.Carousel.getInstance(carousel);
+		  if (bsCarousel) {
+			bsCarousel.to(index);
+		  }
+		});
+	  });
+  
+	  // Gérer les boutons "Précédent" et "Suivant"
+	  if (prevBtn && nextBtn) {
+		prevBtn.addEventListener('click', (event) => {
+		  event.preventDefault();
+		  const bsCarousel = bootstrap.Carousel.getInstance(carousel);
+		  if (bsCarousel) {
+			bsCarousel.prev();
+		  }
+		});
+  
+		nextBtn.addEventListener('click', (event) => {
+		  event.preventDefault();
+		  const bsCarousel = bootstrap.Carousel.getInstance(carousel);
+		  if (bsCarousel) {
+			bsCarousel.next();
+		  }
+		});
+	  }
+	});
+  
+	// Initialiser les carrousels lorsqu'un modal est ouvert
+	const modals = document.querySelectorAll('.modal');
+	modals.forEach((modal) => {
+	  modal.addEventListener('shown.bs.modal', (event) => {
+		const carousel = modal.querySelector('.carousel');
+		if (carousel) {
+		  new bootstrap.Carousel(carousel);
 		}
-	};
-	contactForm();
-
-});
+	  });
+	});
+  });
+  
+  
+  
+  

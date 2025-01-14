@@ -53,12 +53,40 @@ p, li{
   display: flex;
   justify-content: center;
 }
-
+.modal-title{
+  font-size: 2em;
+   
+}
+.modal-header{ 
+  border-bottom: 0;
+}
 .carousel-control-prev{
   filter: drop-shadow(0 0 0.1rem rgb(0, 0, 0));
 }
 .carousel-control-next{
   filter: drop-shadow(0 0 0.1rem rgb(0, 0, 0));
+}
+.page-link{
+  color: #000000;
+  border: none;
+  background-color: #00000000;
+}
+.page-link:hover{
+  color: #14869d;
+  border: 1px #14869d00;
+  background-color: #00000000;
+}
+.page-link:active{
+  color: #14869d;
+  background-color: #00000000;
+  border:#14869d00;
+  
+}
+
+.shadow{
+  border: solid 0.5px #dadada;
+  box-shadow: 10px 5px 5px black;
+  border-radius: 20px;
 }
 .liens{
   text-decoration: none;
