@@ -47,12 +47,52 @@ p, li{
   height: 250px; 
   object-fit: cover;
   border: 0.5px solid rgb(228, 228, 228);
+  background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 100%);
 }
+
 .galery-title{
   width: 350px;
   display: flex;
   justify-content: center;
 }
+.gallery-item {
+  display: inline-block;
+}
+
+.gallery-item .galery {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px; 
+}
+
+.overlay-text {
+  position: static !important;
+  display: inline-block !important;
+  bottom: 15px;
+  left: 20%;
+  transform: translateX(-50%);
+  background-color: #e9f9fc ;
+  color: #14869d;
+  padding: 8px 15px;
+  border-radius: 12px;
+  border: 1px solid #14869d;
+  font-size: 14px;
+  font-weight: 600;
+  pointer-events: none;
+  text-align: left;
+  margin-right: 5px;
+}
+.overlay-text-container {
+  position: absolute; 
+  bottom: 15px;
+  left: 20%;
+  pointer-events: none;
+}
+  .portfolio-item {
+    position: relative;
+    display: inline-block;
+  }
 .modal-title{
   font-size: 2em;
    
