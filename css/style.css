@@ -1,8 +1,76 @@
 body{
-  background-color: #e9f9fc;
+  /*background-color: #e9f9fc;*/
+  position: relative;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  overflow-x: hidden;
+}
+.background-blobs {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 70%;
+  height: 70%;
+  pointer-events: none; /* pour que les blobs n’interfèrent pas avec les clics */
+  z-index: -1; /* derrière tout le contenu */
+  background: none;
+}
+
+/* Les blobs — 3 exemples, modifie couleurs, tailles, positions à souhait */
+.background-blobs::before,
+.background-blobs::after,
+.background-blobs .blob {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.4;
+}
+
+/* Blob 1 */
+.background-blobs::before {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, #75baff 0%, #7ef2ff 80%);
+  top: 180px;
+  left: 180px;
+}
+
+/* Blob 2 */
+.background-blobs::after {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, #7afcff 0%, #3a8dff 80%);
+  bottom: -300px;
+  right: -300px;
+}
+
+/* Blob 3 — un blob “interné” */
+.background-blobs .blob {
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, #f9ffcc 0%, #c9ffca 80%);
+  top: 40%;
+  left: 60%;
+}
+.navbar {
+  background: rgba(255, 255, 255, 0.35) !important;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  transition: background 0.3s ease, backdrop-filter 0.3s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+/* Quand on scrolle → effet un peu plus opaque */
+.navbar.scrolled {
+  background: rgba(255, 255, 255, 0.65) !important;
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
 }
 nav{
-  background-color: #e9f9fc;
+  /*background-color: #e9f9fc;*/
   font-size: 1.5em;
 }
 .nav-link active{
@@ -171,9 +239,9 @@ li{
   color: #B90B0B;
   /*color: #3327ea;*/ 
 }
-.competences{
+/*.competences{
   background-color: #bbecf6
-}
+}*/
 @media (min-width: 430px){
   .main{
     height: 70vh;
