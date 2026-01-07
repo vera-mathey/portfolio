@@ -7,53 +7,70 @@ body{
   background-color: #ffffff;
   overflow-x: hidden;
 }
-.background-blobs {
+  /* 1) Le conteneur doit couvrir l’écran */
+.background-blobs{
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 70%;
-  height: 70%;
-  pointer-events: none; /* pour que les blobs n’interfèrent pas avec les clics */
-  z-index: -1; /* derrière tout le contenu */
-  background: none;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
 }
 
-/* Les blobs — 3 exemples, modifie couleurs, tailles, positions à souhait */
+/* 2) Les blobs doivent être “au-dessus” du fond mais sous le contenu */
+.container, .container-fluid, nav, header, main, footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* 3) Pseudo-elements + blob */
 .background-blobs::before,
 .background-blobs::after,
-.background-blobs .blob {
-  content: "";
+.background-blobs .blob{
   position: absolute;
   border-radius: 50%;
-  filter: blur(60px);
-  opacity: 0.4;
+  filter: blur(40px);
+  opacity: 0.95;
 }
 
-/* Blob 1 */
-.background-blobs::before {
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, #75baff 0%, #7ef2ff 80%);
-  top: 180px;
-  left: 180px;
+/* IMPORTANT : sans ça, ::before / ::after ne s'affichent pas */
+.background-blobs::before,
+.background-blobs::after{
+  content: "";
 }
 
-/* Blob 2 */
-.background-blobs::after {
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, #7afcff 0%, #3a8dff 80%);
-  bottom: -300px;
-  right: -300px;
+
+
+/* Blob 1 (mint doux derrière la photo) */
+.background-blobs::before{
+  width: 380px; height: 380px;
+  background: radial-gradient(circle,
+    rgba(126,252,255,.55) 0%,
+    rgba(126,252,255,.18) 38%,
+    rgba(126,252,255,0) 75%
+  );
+  top: 140px; left: 120px;
 }
 
-/* Blob 3 — un blob “interné” */
-.background-blobs .blob {
-  width: 350px;
-  height: 350px;
-  background: radial-gradient(circle, #f9ffcc 0%, #c9ffca 80%);
-  top: 40%;
-  left: 60%;
+/* violet bas-droite */
+.background-blobs::after{
+  width: 620px; height: 620px;
+  background: radial-gradient(circle,
+    rgba(156,143,255,.60) 0%,
+    rgba(107,92,255,.18) 40%,
+    rgba(107,92,255,0) 78%
+  );
+  bottom: -420px; right: -420px;
+}
+
+/* violet marque derrière le nom */
+.background-blobs .blob{
+  width: 460px; height: 460px;
+  background: radial-gradient(circle,
+    rgba(156,143,255,.42) 0%,
+    rgba(107,92,255,.12) 42%,
+    rgba(107,92,255,0) 78%
+  );
+  top: 60px; left: 52%;
+  transform: translateX(-50%);
 }
 .navbar {
   background: rgba(255, 255, 255, 0.35) !important;
@@ -96,7 +113,10 @@ nav{
 .nom{
   font-family: 'Satisfy', sans-serif;
   font-size: 4em;
-  color: #14869d;
+  background: linear-gradient(135deg, #2f1876, #7afcff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 h2, h3, h4{
   font-family: 'Yeseva One', serif;
@@ -133,30 +153,47 @@ p, li{
   display: block;
   border-radius: 10px; 
 }
+/* Badge techno sur image (option A) */
+.gallery-item { 
+  overflow: hidden; 
+  border-radius: 16px; /* optionnel si tu veux renforcer le style */
+}
 
-.overlay-text {
-  position: static !important;
-  display: inline-block !important;
-  bottom: 15px;
-  left: 20%;
-  transform: translateX(-50%);
-  background-color: #e9f9fc ;
-  color: #14869d;
-  padding: 8px 15px;
+.project-badge{
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 2;
+
+  background: rgba(255, 255, 255, 0.68);
+  color: #2f1876;
+  margin-left: 10px;
+  margin-top: 5px;
+  padding: 6px 10px;
   border-radius: 12px;
-  border: 1px solid #14869d;
-  font-size: 14px;
+
+  font-size: 12px;
   font-weight: 600;
-  pointer-events: none;
-  text-align: left;
-  margin-right: 5px;
+  letter-spacing: .2px;
+
+  box-shadow: 0 10px 24px rgba(0,0,0,.14);
+  backdrop-filter: blur(6px);
 }
-.overlay-text-container {
-  position: absolute; 
-  bottom: 15px;
-  left: 20%;
-  pointer-events: none;
+
+
+.gallery-item:hover .overlay-text-container{
+  opacity: 1;
 }
+
+.overlay-text{
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 10px;
+  background: rgba(0,0,0,.25);
+}
+
   .portfolio-item {
     position: relative;
     display: inline-block;
@@ -202,32 +239,93 @@ p, li{
 }
 .icon{
   font-size: 2em;
-  color: #14869d;
+  background: linear-gradient(135deg, #6b3aff, #371d86);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 .icon-main{
   font-size: 3em;
+  background: linear-gradient(135deg, #6b3aff, #371d86);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
-.icon-comp{
-  font-size: 2em;
-  color: #14869d;
+/* Skills – alignement icônes */
+.skill-item{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 160px; /* aide à aligner visuellement en colonne */
+}
+
+.skill-icon{
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 24px;
+  font-size: 24px; /* pour les <i> Font Awesome */
+  line-height: 1;
+}
+
+.skill-icon img{
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  display: block;
+}
+
+/* optionnel : un petit accent couleur */
+.skills .skill-icon{
+  color: #6B5CFF;
+}
+.icon-comp,
+.skill-icon{
+  width: 24px;
+  height: 24px;
+  font-size: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, #6b3aff, #371d86);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 li{
   line-height: 3;
 }
+.skills-column {
+  text-align: left;
+}
+.skill-title {
+  align-self: flex-start;
+  width: 160px;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 600;
+}
+.skills > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .btn-contact{
-  background-color: #e9f9fc;
-  border: #14869d solid 2px;
-  color: #14869d;
+  background: linear-gradient(135deg, #6b3aff, #371d86);
+  border: none;
+  border-radius: 12px;
+  color: white;
   font-weight: bolder;
+  box-shadow: 0 4px 15px rgba(107, 58, 255, 0.3);
+  transition: all 0.3s ease;
 }
 .btn-contact:hover{
-  background-color: #14869d;
-  border: #14869d solid 2px;
-  color: #ffffff;
-  font-weight: bolder;
-}
-#form-message-warning, #form-message-success {
-  display: none; 
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(107, 58, 255, 0.4);
+  color: white !important;
 }
 
 #form-message-success {
