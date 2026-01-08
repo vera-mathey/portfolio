@@ -97,11 +97,11 @@ body{
 
 /* Troisième blob - violet EN BAS À GAUCHE */
 .blob-contact:nth-child(2) {
-  width: 140px;
-  height: 140px;
+  width: 150px;
+  height: 150px;
   background: #371d86;
   bottom: 10%;
-  left: 38%;
+  left: 42%;
   animation-delay: 12s;
 }
 /* Animation flottante douce */
