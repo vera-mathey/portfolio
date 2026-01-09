@@ -28,15 +28,18 @@ body{
 .blob {
   position: absolute;
   border-radius: 50%;
-  filter: blur(60px);
+  filter: blur(40px);
   opacity: 0.7;
   animation: float-blob 20s ease-in-out infinite;
+  will-change: transform;
+  transform: translateZ(0);
 }
 /* Premier blob - violet */
 .blob:nth-child(1) {
   width: 130px;
   height: 130px;
-  background: #371d86;
+  background: 
+  #371d86;
   top: 25%;
   left: 15%;
   animation-delay: 0s;
@@ -77,9 +80,11 @@ body{
 .blob-contact {
   position: absolute;
   border-radius: 50%;
-  filter: blur(60px);
+  filter: blur(40px);
   opacity: 0.6;
   animation: float-blob 20s ease-in-out infinite;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 /* Premier blob - violet EN HAUT */
@@ -110,10 +115,10 @@ body{
     transform: translate(0, 0) scale(1);
   }
   33% {
-    transform: translate(15px, -15px) scale(1.03);
+    transform: translate(40px, -40px) scale(1.03);
   }
   66% {
-    transform: translate(-10px, -20px) scale(0.97);
+    transform: translate(-25px, -30px) scale(0.97);
   }
 }
 
@@ -130,18 +135,53 @@ body{
   border-bottom: 1px solid rgba(255, 255, 255, 0.25);
 }
 
-/* Quand on scrolle → effet un peu plus opaque */
 .navbar.scrolled {
   background: rgba(255, 255, 255, 0.65) !important;
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
 }
 nav{
-  /*background-color: #e9f9fc;*/
   font-size: 1.5em;
+  color: #000000;
+  position: relative;
+  transition: all 0.3s ease;
 }
-.nav-link active{
-  color: #14869d;
+.nav-link:hover {
+  background: linear-gradient(135deg, #6b3aff, #371d86);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Lien actif */
+.nav-link.active {
+  background: linear-gradient(135deg, #6b3aff, #371d86);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.navbar-nav .nav-link {
+  position: relative;
+}
+
+.navbar-nav .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: linear-gradient(135deg, #6b3aff, #371d86);
+  transition: width 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover::after {
+  width: 80%;
+}
+
+.navbar-nav .nav-link.active::after {
+  width: 80%;
 }
 .satisfy-regular {
   font-family: "Satisfy", cursive;
@@ -163,7 +203,7 @@ nav{
 .nom{
   font-family: 'Satisfy', sans-serif;
   font-size: 4em;
-  background: linear-gradient(135deg, #2f1876, #7afcff);
+  background: linear-gradient(135deg,  #6736d9, #2f1974);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -396,17 +436,18 @@ footer.d-flex {
 }
 
 .content {
-  margin-bottom: 1rem !important; /* Au lieu de mb-3 */
-}
-
-/* Ou encore mieux, réduit tout l'espace de la section contact */
-#contact {
   margin-bottom: 1rem !important;
 }
 
+
+#contact {
+  margin-top: 140px;
+  padding-top: 140px;
+}
+
 .content.mt-5 {
-  margin-top: 3rem !important; /* Réduit mt-5 */
-  margin-bottom: 0 !important; /* Enlève mb-3 */
+  margin-top: 3rem !important;
+  margin-bottom: 0 !important;
 }
 @media (min-width: 430px){
   .main{
@@ -448,3 +489,11 @@ footer.d-flex {
       border-radius: 5px;
     }
 }
+@media (prefers-reduced-motion: reduce){
+  .blob, .blob-contact{
+    animation: none !important;
+    transform: none !important;
+  }
+  html:focus-within { scroll-behavior: auto; }
+}
+
