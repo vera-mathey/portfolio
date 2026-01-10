@@ -224,14 +224,16 @@ p, li{
   width: 350px; 
   height: 250px; 
   object-fit: cover;
-  border: 0.5px solid rgb(228, 228, 228);
-  background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 100%);
+  border: 0.5px solid rgb(221, 220, 220);
+  border-radius: 10px;
+  display: block;
 }
 
 .galery-title{
   width: 350px;
   display: flex;
   justify-content: center;
+  margin-bottom: 40px;
 }
 .gallery-item {
   display: inline-block;
@@ -248,7 +250,11 @@ p, li{
   overflow: hidden; 
   border-radius: 16px; /* optionnel si tu veux renforcer le style */
 }
-
+.skill-icon img,
+img[alt*="Adobe"]{
+  height: auto;
+  object-fit: contain;
+}
 .project-badge{
   position: absolute;
   top: 12px;
