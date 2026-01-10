@@ -222,7 +222,8 @@ p, li{
 }
 .galery{
   width: 350px; 
-  height: 250px; 
+  aspect-ratio: 7 / 5; /* 350/250 */
+  height: auto;
   object-fit: cover;
   border: 0.5px solid rgb(221, 220, 220);
   border-radius: 10px;
@@ -313,15 +314,21 @@ img[alt*="Adobe"]{
   background-color: #00000000;
 }
 .page-link:hover{
-  color: #14869d;
-  border: 1px #14869d00;
-  background-color: #00000000;
+  background: linear-gradient(135deg, #6b3aff, #371d86);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  border: none;
 }
-.page-link:active{
-  color: #14869d;
-  background-color: #00000000;
-  border:#14869d00;
-  
+.page-link:active,
+.page-link:focus {
+  background: linear-gradient(135deg, #6b3aff, #371d86);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  border: none;
+  outline: none;
+  box-shadow: none;
 }
 
 .shadow{
@@ -331,7 +338,10 @@ img[alt*="Adobe"]{
 }
 .liens{
   text-decoration: none;
-  color: #14869d;
+  background: linear-gradient(135deg, #6b3aff, #371d86);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 .icon{
   font-size: 2em;
