@@ -56,8 +56,8 @@
         </div>
         <img class="img-round" src="img/profile.jpg"
      alt="Photo de Vera Mathey"
-     width="300px"
-     height="300px"
+     width="300"
+     height="300"
      fetchpriority="high">
       </div>
       <div class="col-md-8 d-flex justify-content-start align-items-center main">
@@ -192,7 +192,7 @@
                 loading="lazy"
                 decoding="async"
                 width="350"
-                height="250" src="img/portfolio/p-5.jpg" alt="Pochettes Semental">
+                height="250" alt="Pochettes Semental">
               <span class="project-badge">Suite Adobe</span>
           </a>
           </div>
@@ -279,7 +279,7 @@
           </div>
         </div>
       </div>  
-  </div>
+  
 
   <!--Portfolio description-->
   <!--element 1-->
@@ -910,14 +910,14 @@ La composition met l’accent sur la lisibilité, l’élégance et la reconnais
   <!--element 10-->
   <!--compétences-->
   <div class="container-fluid competences mt-5 mb-3 d-flex align-items-center justify-content-center" id="competences">
-    <div class="container mb-5">
+    <div class="container">
       <div class="col-md-12 d-flex justify-content-center mt-5 mb-5"><h2>Compétences</h2></div>
       <div class="row g-4 skills">
 
       <!-- No-code -->
       <div class="col-md-3 col-sm-6 col-6">
         <h3 class="h5 skill-title mb-3">No-code</h3>
-        <ul class="list-unstyled d-flex flex-column align-items-center gap-2 mb-0">
+        <ul class="list-unstyled d-flex flex-column gap-2 mb-0">
 
           <li class="skill-item">
             <span class="skill-icon" aria-hidden="true">
@@ -946,7 +946,7 @@ La composition met l’accent sur la lisibilité, l’élégance et la reconnais
       <!-- Front-end -->
       <div class="col-md-3 col-sm-6 col-6">
         <h3 class="h5 skill-title mb-3">Front-end</h3>
-        <ul class="list-unstyled d-flex flex-column align-items-center gap-2 mb-0">
+        <ul class="list-unstyled d-flex flex-column gap-2 mb-0">
 
           <li class="skill-item">
             <span class="skill-icon" aria-hidden="true">
@@ -975,8 +975,7 @@ La composition met l’accent sur la lisibilité, l’élégance et la reconnais
       <!-- Back-end -->
       <div class="col-md-3 col-sm-6 col-6">
         <h3 class="h5 skill-title mb-3">Back-end</h3>
-        <ul class="list-unstyled d-flex flex-column align-items-center gap-2 mb-0">
-
+        <ul class="list-unstyled d-flex flex-column gap-2 mb-0">
           <li class="skill-item">
             <span class="skill-icon" aria-hidden="true">
               <i class="fa-brands fa-php"></i>
@@ -1004,7 +1003,7 @@ La composition met l’accent sur la lisibilité, l’élégance et la reconnais
       <!-- Design -->
       <div class="col-md-3 col-sm-6 col-6">
         <h3 class="h5 skill-title mb-3">Design</h3>
-        <ul class="list-unstyled d-flex flex-column align-items-center gap-2 mb-0">
+        <ul class="list-unstyled d-flex flex-column gap-2 mb-0">
 
           <li class="skill-item">
             <span class="skill-icon" aria-hidden="true">
@@ -1107,6 +1106,7 @@ La composition met l’accent sur la lisibilité, l’élégance et la reconnais
   </footer>
 </div>
   <!--footer-->
+</div>  
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <!--<script src="js/jquery.validate.min.js"></script>-->
   <script src="js/main.js" defer></script>
@@ -1136,13 +1136,12 @@ La composition met l’accent sur la lisibilité, l’élégance et la reconnais
   const onScroll = () => {
     const y = window.scrollY;
 
-    // navbar scrolled (tu peux garder ton autre script, mais ici c'est centralisé)
+    // navbar scrolled
     if (navbar) navbar.classList.toggle("scrolled", y > 10);
 
     const navH = navbar ? navbar.offsetHeight : 0;
     const anchor = navH + 20;
 
-    // règle robuste: on prend la DERNIÈRE section dont le top a passé l’ancre
     let current = items[0].a;
 
     for (const it of items) {
@@ -1150,7 +1149,6 @@ La composition met l’accent sur la lisibilité, l’élégance et la reconnais
       if (top <= anchor) current = it.a;
     }
 
-    // tout en bas: forcer le dernier lien (évite "compétences" actif au footer)
     const nearBottom = (window.innerHeight + y) >= (document.body.scrollHeight - 2);
     if (nearBottom) current = items[items.length - 1].a;
 
