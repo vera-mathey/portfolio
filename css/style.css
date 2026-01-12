@@ -212,6 +212,41 @@ h2, h3, h4{
 p, li{
   font-family: 'Josefin Sans', sans-serif;
 }
+.about{
+  position: relative;
+  width: 100%;
+  line-height: 1.65;
+  overflow: visible; 
+}
+.about::before,
+.about::after{
+  position: absolute;
+  font-family: "Yeseva One", serif;
+  font-size: clamp(520px, 9vw, 140px);
+  line-height: 1;
+  color: rgba(108, 92, 255, 0.096); /* violet très léger */
+  pointer-events: none;
+  z-index: 0; /* derrière le texte */
+}
+
+.about::before{
+  content: "“";
+  top: -82px;
+  left: -74px;
+}
+
+.about::after{
+  content: "”";
+  bottom: -352px;
+  right: -10px;
+}
+
+.about > span{
+  position: relative;
+  display: inline-block;
+  max-width: 80ch;
+  z-index: 1; /* texte au-dessus */
+}
 
 .img-round{
   border-radius: 50%;
@@ -351,6 +386,17 @@ img[alt*="Adobe"]{
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+#realisations{
+  position: relative;
+  padding: 40px 0 10px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(126, 253, 255, 0.233) 0%,
+      rgba(126, 253, 255, 0.374) 100%
+    );
+}
+
 /* Skills – alignement icônes */
 .skill-item{
   display: flex;
@@ -374,9 +420,13 @@ img[alt*="Adobe"]{
   object-fit: contain;
   display: block;
 }
-.skills .skill-icon{
-  color: #6B5CFF;
+.skills{
+  background-color: rgba(219, 223, 248, 0.547); /* violet très doux */
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.05);
+  padding: 2rem 1.5rem;
 }
+
 .icon-comp,
 .skill-icon{
   width: 24px;
@@ -498,9 +548,7 @@ footer.d-flex {
   body {
     overflow-x: hidden !important;
   }
-  .container {
-    overflow-x: hidden !important;
-  }
+
   /* Container principal compétences */
   .container-fluid.competences {
     display: block !important;
@@ -554,6 +602,9 @@ footer.d-flex {
     margin-bottom: 1rem !important;
   }
   .mt-3 { margin-top: 0.75rem !important; }
+  #realisations{
+    padding: 24px 0 6px;
+  }
   #realisations ~ .row .mb-3,
   .row:has(.gallery-item) .mb-3 {
   margin-bottom: 0 !important;
