@@ -11,6 +11,10 @@ body{
   overflow-x: hidden;
   width: 100%;
   max-width: 100vw;
+  font-family: 'Josefin Sans', system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.65;
+  color: #1f1f1f;
 }
 
 /* Images responsive */
@@ -199,18 +203,22 @@ nav{
 
 .nom{
   font-family: 'Satisfy', sans-serif;
-  font-size: 4em;
+  font-size: 1.6em;
   background: linear-gradient(135deg,  #6736d9, #2f1974);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-h2, h3, h4{
+.metier{
   font-family: 'Yeseva One', serif;
-  color: #000000;
+  font-size: 0.7em;
+  color: #111;
 }
-p, li{
-  font-family: 'Josefin Sans', sans-serif;
+h2, h3, h4{
+  font-family: 'Yeseva One', Georgia, serif;
+  color: #111;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
 }
 .about{
   position: relative;
@@ -546,6 +554,8 @@ footer.d-flex {
     overflow: visible !important;
   }
   body {
+    font-size: 16.5px;
+    line-height: 1.7;
     overflow-x: hidden !important;
   }
 
