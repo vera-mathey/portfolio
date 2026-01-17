@@ -396,8 +396,8 @@ img[alt*="Adobe"]{
   background:
     linear-gradient(
       180deg,
-      rgba(126, 253, 255, 0.141) 0%,
-      rgba(126, 253, 255, 0.237) 100%
+      rgba(168, 252, 254, 0.141) 0%,
+      rgba(184, 250, 251, 0.237) 100%
     );
 }
 
@@ -428,12 +428,12 @@ img[alt*="Adobe"]{
   background: 
   linear-gradient(
       90deg,
-  rgba(200, 207, 250, 0.582) 0%,
-  rgba(219, 223, 248, 0.35) 80%,
-  rgba(126, 253, 255, 0.169) 100%
+  rgb(239, 240, 252) 0%,
+  rgb(229, 231, 249) 85%,
+  rgb(209, 253, 254) 100%
     );
   border-radius: 20px;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.05);
+  box-shadow: 0 12px 30px rgba(53, 34, 100, 0.199);
   padding: 2rem 1.5rem;
 }
 
